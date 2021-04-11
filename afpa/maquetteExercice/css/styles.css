@@ -1,0 +1,204 @@
+.hauteur{
+    height: 300px;
+} 
+.hauteur1{
+    height: 400px;
+} 
+
+.degrade{
+    background: linear-gradient(0.25turn, #FF554E, #FFB504);
+}
+
+.degrade li{
+    background: none;
+    border: none;
+}
+
+h1{
+    font-size: 30px;
+}
+
+/* .hauteurBusiness {max-width: 100%} */
+
+a{
+    color: white;
+}
+
+/* .business a{color: #62BFE6;
+    font-size: 80px;} */
+.business a{color: #62BFE6;
+font-size: 80px;
+}
+
+
+.liste1 li{
+    list-style-type: none;
+}
+
+header span{
+    background-color: #F6F466;
+}
+
+#telephone{
+    color: #62BFE6;
+    background-color: white;
+    font-size: larger;
+}
+
+.navbutton{
+    padding: 14px 28px;
+}
+
+.navbutton:hover{ background-color: #62BFE6;
+    text-decoration: none;
+    height: 100%;
+
+}
+
+#carousel1 img{
+    max-height: 800px;
+
+}
+
+.art1{
+    background-color: #57AACD;
+    color: white
+}
+
+.part1{
+    margin-top: -1rem;
+}
+
+.part1 span{
+    font-size: 90px;
+}
+
+.section1 span{
+    font-size: 80px;
+    padding: 10px;
+    background-color: #62BFE6;
+    color: white;
+    max-height: 100px;
+}
+.section1 ul{
+    max-width: 400px;
+    list-style-type: none;
+}
+
+.art2{
+    padding-left: 0;
+}
+
+.imageFruit{
+    width: 100%;
+}
+
+.art3 span{
+    background-color: white;
+    color: #62BFE6;
+}
+
+.art3 li{
+    list-style-type: none;
+}
+
+.button1{
+    background-color: #57AACD;
+    color: white;
+}
+
+.art4 li{
+    list-style-type: none;
+}
+
+
+
+#liste3{
+    background-color: #57AACD;
+    color: white;
+}
+
+#liste4{
+    background-color: #F5F5F5;
+}
+
+#image4{
+    /* display: block; */
+    max-width: 150px;
+    max-height: 150px;
+}
+
+#span1{ 
+    color: white;
+    font-size: 50px;
+}
+
+#span2{color: #57AACD;
+    font-size: 50px;}
+
+.image5{
+    max-width: 60%;
+    max-height: 90%; 
+}
+
+.starIcon{
+    color:#F6F466
+
+}
+
+footer li{
+    color: gray;
+    border:none;
+}
+
+footer span{
+    background-color:#62BFE6;
+    
+}
+
+#location{
+    color: #62BFE6;
+    background-color: #4A4C4E;
+    font-size: larger;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+    font-size: 25px;
+}
+
+#telephone2{
+    color: #62BFE6;
+    background-color: #4A4C4E;
+    font-size: larger;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+    font-size: 25px;
+}
+
+.liste5{border: none;}
+
+h3 span{
+    color: white
+}
+
+
+@media (max-width: 575px) {
+    .hauteur {height: 800px}
+    .art2 {padding-left: 5px;}
+    .art3 {padding-top: 15px;}
+    .art4 {padding-top: 15px;
+            max-width: 80%;}
+    .hauteurBusiness{max-height: 200px;}
+    #telephone{font-size: smaller;}
+    .listeTelephone{font-size: smaller;}
+    .numerosize{font-size: small;}
+}
+
+@media (max-width: 767px){
+    .hauteur {height: 600px}
+    .imageFruit{width: 70%;}
+    /* .art4 {max-width: 70%} col-sm-12 se fait ecraser*/
+    .art4 {padding-top: 15px;
+        max-width: 80%;} 
+}

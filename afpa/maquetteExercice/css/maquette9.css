@@ -1,0 +1,300 @@
+.navigation {
+    position: absolute;
+    margin: 4rem;
+    left: 180px;
+}
+
+.bandeBleue {
+  background: #043d72;
+  height: auto;
+  color: white;
+}
+
+#bg-image {
+    background-image: url("images/image1.jpg");
+}
+
+.fondDegrade {
+  height: 400px;
+  background-image: linear-gradient(to right, #43366C, #D11844);
+  color: white;
+}
+
+.check {
+    background-color: white;
+    color: #FD1E5F;
+}
+
+.iconeGoutte {
+    background-color: white;
+    color: #073E77;
+}
+
+.grosChiffre{
+    font-size : 50px;
+}
+
+
+
+h1 {
+    color: black;
+    font-family: 'Anton', sans-serif;
+    font-weight: bold;
+    font-size : 60px;
+    
+}
+
+h3 {
+    color: black;
+    font-family: 'Anton', sans-serif;
+    font-weight: bold;
+    font-size : 40px;
+}
+
+.fondGris {
+    background-color: #FAFAFA;
+}
+
+.counterWhite h3 {
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.forfait3 {
+    height: 500px;
+    box-shadow: 12px 12px 10px 10px rgba(244, 244, 244, 244)
+}
+
+.titreBanniere {
+    /* position: absolute; */
+    padding-left: 100px;
+    padding-top: -200px;
+}
+
+.ovalImage img {
+    margin-top: -50px;
+    border-radius: 0% 0% 50% 50%;
+    overflow: hidden;
+    height : 200px;
+    /* position: absolute; */
+}
+
+.listeBanniere {
+    /* padding-top: 150px; */
+}
+
+p b {
+    font-size: 50px;
+}
+
+.docPhoto {
+    height: 500px;
+    background-color: white;
+    color: black;
+    padding-right: 0;
+    padding-left: 0;
+    margin: 10px;
+}
+
+.nomDocteur p {
+    color: #FF62B0
+}
+
+.nomDocteur span {
+    background-color: white;
+    opacity: 0.5;
+}
+
+.photoDocteurOval {
+    border-radius: 0% 0% 0% 20%;
+}
+
+.formulaire {
+    margin-top: -2rem;
+    background-color: white;
+    box-shadow: 0px 0px 5px 6px rgba(244, 244, 244, 244)
+
+}
+
+button {
+    border-radius: 30px;
+    background-color: #FB1F5C;
+    border: none;
+    color: white;
+    padding: 10px;
+}
+
+.iconDoctor{
+    background: none;
+    color: #FB1F5C;
+    font-size: 24px;
+}
+
+#logoAfpa {
+    width: 80px;
+    margin-right: 200px;
+}
+
+span {
+    margin: 5px;
+    background-color: black;
+    border-radius: 50% 50% 50% 50%;
+}
+
+.text-box {
+	position: absolute;
+	top: 50%;
+	left: 15%;
+	right: 15%;
+	color: #fff;
+	text-align: center;
+	transform: translateY(-50%);
+}
+
+#doctorImg {
+    width: 100%;
+    height: 1000px;
+}
+
+.articles {
+    box-shadow: 0px 0px 10px 6px rgba(244, 244, 244, 244)
+}
+
+
+footer span{
+    background: none;
+    color: #FB1F5C;
+}
+
+footer h6 {
+    font-size: larger;
+}
+
+.newsLetter {
+    /* z-index: 5; */
+    background-color: white;
+}
+
+.blocBas {
+    padding-top: 200px;
+}
+
+/* Slider */
+
+.slick-slide {
+    margin: 0px 20px;
+}
+
+.slick-slide img {
+    width: 100%;
+}
+
+.slick-slider
+{
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+            user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list
+{
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.slick-list:focus
+{
+    outline: none;
+}
+.slick-list.dragging
+{
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list
+{
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+         -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+}
+
+.slick-track
+{
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+}
+.slick-track:before,
+.slick-track:after
+{
+    display: table;
+    content: '';
+}
+.slick-track:after
+{
+    clear: both;
+}
+.slick-loading .slick-track
+{
+    visibility: hidden;
+}
+
+.slick-slide
+{
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+}
+[dir='rtl'] .slick-slide
+{
+    float: right;
+}
+.slick-slide img
+{
+    display: block;
+}
+.slick-slide.slick-loading img
+{
+    display: none;
+}
+.slick-slide.dragging img
+{
+    pointer-events: none;
+}
+.slick-initialized .slick-slide
+{
+    display: block;
+}
+.slick-loading .slick-slide
+{
+    visibility: hidden;
+}
+.slick-vertical .slick-slide
+{
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+}
+.slick-arrow.slick-hidden {
+    display: none;
+}
