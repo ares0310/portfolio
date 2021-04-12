@@ -16,8 +16,8 @@
     </div>
     <i class="fas fa-address-book"></i>
     <?php
-    require_once('../view/ViewUser.php');
-    require_once("../model/ModelUser.php");
+    require_once ('../view/ViewUser.php');
+    require_once ("../model/ModelUser.php");
     // ViewUser::ajoutUser();      // pour appeler --> nomclasse - ensuite : : et fonction dans la classe
     // ModelUser::ajoutUser("Arsen", "Raziyev", "arsen@test.com", "0778777666", "arsen", "arsen", "arsen");
     ?>

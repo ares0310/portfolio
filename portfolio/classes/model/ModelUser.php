@@ -6,10 +6,7 @@ class ModelUser
     {
         $idcon = connexion();
 
-        $requete = $idcon->prepare("
-                    INSERT INTO user VALUES (null,:nom, :prenom, :mail, :tel, :adresse, :photo, :description)
-
-                ");
+        $requete = $idcon->prepare("INSERT INTO user VALUES (null,:nom, :prenom, :mail, :tel, :adresse, :photo, :descriptions)");
         $requete->execute([
             ':nom' => $nom,
             ':prenom' => $prenom,
@@ -17,7 +14,17 @@ class ModelUser
             ':tel' => $tel,
             ':adresse' => $adresse,
             ':photo' => $photo,
-            ':description' => $description
+            ':descriptions' => $description
         ]);
     }
+    public static function listeUsers(){
+        $idcon = connexion();
+        $requete = $idcon->prepare("
+        SELECT * FROM user
+        ");
+        $requete->execute();
+        return $requete->fetchAll();
+    }
+    
 }
+
