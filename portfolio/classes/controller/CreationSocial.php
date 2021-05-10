@@ -12,11 +12,22 @@
 
 <body>
     <?php
-    require_once('../view/ViewUser.php');
+    require_once("../view/ViewSocial.php");
     require_once("../model/ModelUser.php");
+    require_once("../model/ModelSocial.php");
     require_once("../view/ViewTemplate.php");
     ViewTemplate::menu();
-    ViewUser::listeUsers();
+    
+    
+    if(isset($_POST["ajout"])){
+        ModelSocial::ajoutSocial(10,$_POST["type_soc_id"],$_POST["lien"]);
+        ViewTemplate::alert("RS ajouté","primary","listeTypeSoc");
+        
+    } else {
+        ViewSocial::ajoutSocial();
+    }
+    
+    
     ViewTemplate::footer();
     ?>
 
@@ -25,9 +36,6 @@
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
-    <script src="../../js/ctrl.js"></script>
-    
-
 </body>
 
 </html>

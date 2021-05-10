@@ -12,11 +12,12 @@
 
 <body>
     <?php
-    require_once('../view/ViewUser.php');
-    require_once("../model/ModelUser.php");
-    require_once("../view/ViewTemplate.php");
+    require_once ('../view/ViewTypeSoc.php');
+    require_once ("../model/ModelTypeSoc.php");
+    require_once ("../view/ViewTemplate.php");
+    require_once ("../view/ViewTypeRef.php");
     ViewTemplate::menu();
-    ViewUser::listeUsers();
+    ViewTypeRef::listeTypeRef();
     ViewTemplate::footer();
     ?>
 
@@ -25,9 +26,6 @@
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
-    <script src="../../js/ctrl.js"></script>
-    
-
 </body>
 
 </html>

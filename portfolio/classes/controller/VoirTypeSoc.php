@@ -1,3 +1,7 @@
+<?php
+require_once "../view/ViewTypeSoc.php";
+require_once "../view/ViewTemplate.php";
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,13 +15,28 @@
 </head>
 
 <body>
-    <?php
-    require_once('../view/ViewUser.php');
-    require_once("../model/ModelUser.php");
-    require_once("../view/ViewTemplate.php");
+<?php
     ViewTemplate::menu();
-    ViewUser::listeUsers();
-    ViewTemplate::footer();
+    
+    
+        if(isset($_GET["id"])){
+            if(ModelTypeSoc::infoTypeSoc($_GET["id"])){
+                ViewSoc::infoTypeSoc($_GET["id"]);
+            } else {
+                ViewTemplate::alert("L'id n'existe pas", "danger", "listeTypeSoc.php");
+            }
+        } else {
+            
+            ViewTemplate::alert("L'utilisateur n'existe pas", "danger", "listeTypeSoc.php");
+        
+        }
+        ?>
+
+        <br>
+        <?php
+
+
+        ViewTemplate::footer();
     ?>
 
 
@@ -25,9 +44,6 @@
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
-    <script src="../../js/ctrl.js"></script>
-    
-
 </body>
 
 </html>

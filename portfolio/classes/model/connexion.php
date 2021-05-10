@@ -5,7 +5,7 @@ function connexion()
     
     $servername = "localhost";
     $username = "root";
-    $password = "";
+    $password = "root";
     $dbname= "portfolio";
 
     try {

@@ -25,6 +25,35 @@ class ModelUser
         $requete->execute();
         return $requete->fetchAll();
     }
+    public static function infoUsers($id){
+        $idcon = connexion();
+        $requete = $idcon->prepare("SELECT * FROM user WHERE id = :id");
+        $requete->execute([":id" => $id]);
+        return $requete->fetch();
+    }
+    
+    public static function modifUser($id, $nom, $prenom, $mail, $tel, $adresse, $photo, $description){
+        $idcon=connexion();
+        $requetModif=$idcon->prepare("UPDATE user SET nom = :nom, prenom = :prenom, mail = :mail, tel = :tel,
+         adresse = :adresse, photo = :photo, description = :descriptions WHERE id = :id");
+        $requetModif->execute([
+            ':id' => $id,
+            ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':mail' => $mail,
+            ':tel' => $tel,
+            ':adresse' => $adresse,
+            ':photo' => $photo,
+            ':descriptions' => $description
+
+         ]);
+    }
+    public static function SuppressionUser($id){
+        $idcon=connexion();
+        $requetSuppr=$idcon->prepare("DELETE FROM user WHERE id  = :id");
+        $requetSuppr->execute([":id" => $id]);
+        
+    }
     
 }
 

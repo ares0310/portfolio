@@ -12,11 +12,24 @@
 
 <body>
     <?php
-    require_once('../view/ViewUser.php');
+    require_once("../view/ViewSocial.php");
     require_once("../model/ModelUser.php");
+    require_once("../model/ModelSocial.php");
     require_once("../view/ViewTemplate.php");
+    require_once("../model/ModelTypeRef.php");
+    require_once("../view/ViewTypeRef.php");
+
     ViewTemplate::menu();
-    ViewUser::listeUsers();
+    
+    
+    if(isset($_POST["valider"])){
+        ModelTypeRef::ajoutTypeRef($_POST["type_ref"], $_POST["support"]);
+        ViewTemplate::alert("Type Ref ajouté","primary","listeTypeRef.php");
+    }else{
+        ViewTypeRef::ajoutTypeRef();
+    }
+    
+    
     ViewTemplate::footer();
     ?>
 
@@ -25,9 +38,6 @@
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
-    <script src="../../js/ctrl.js"></script>
-    
-
 </body>
 
 </html>

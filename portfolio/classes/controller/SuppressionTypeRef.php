@@ -1,3 +1,10 @@
+<?php
+require_once "../view/ViewTypeSoc.php";
+require_once "../view/ViewTemplate.php";
+require_once "../model/ModelTypeSoc.php";
+require_once "../model/ModelTypeRef.php";
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,11 +19,17 @@
 
 <body>
     <?php
-    require_once('../view/ViewUser.php');
-    require_once("../model/ModelUser.php");
-    require_once("../view/ViewTemplate.php");
     ViewTemplate::menu();
-    ViewUser::listeUsers();
+    if(isset($_GET["id"])){
+        if(ModelTypeRef::infoTypeRef($_GET["id"])){
+            ModelTypeRef::supprTypeRef($_GET["id"]);
+            ViewTemplate::alert("Suppression fait avec succès", "success", "ListeTypeRef.php");
+        } else {
+            ViewTemplate::alert("Type ref n'existe pas", "danger", "ListeTypeRef.php");
+        }
+    }else{
+        ViewTemplate::alert("Aucune donnée transmise", "danger", "ListeTypeRef.php");
+    }
     ViewTemplate::footer();
     ?>
 
@@ -25,9 +38,6 @@
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
-    <script src="../../js/ctrl.js"></script>
-    
-
 </body>
 
 </html>

@@ -11,23 +11,23 @@
 </head>
 
 <body>
-    <?php
-    require_once('../view/ViewUser.php');
-    require_once("../model/ModelUser.php");
-    require_once("../view/ViewTemplate.php");
-    ViewTemplate::menu();
-    ViewUser::listeUsers();
+<?php
+require_once ("../view/ViewTypeSoc.php");
+    require_once ("../model/ModelTypeSoc.php");
+    require_once ("../view/ViewTemplate.php");
+    
+    if (isset($_POST["valider"])) {         // isset - teste si cette variable a une valeur
+        ModelTypeSoc::ajoutSocial($_POST['soc']);
+        ViewTemplate::alert("Le RS a été ajouté", "primary", "listeTypeSoc.php");
+    } else {
+        ViewSoc::ajoutSocial();
+    }
     ViewTemplate::footer();
     ?>
-
-
 
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
-    <script src="../../js/ctrl.js"></script>
-    
-
 </body>
 
 </html>

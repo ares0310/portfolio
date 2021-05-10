@@ -1,3 +1,9 @@
+<?php
+require_once("../view/ViewUser.php");
+    require_once("../model/ModelUser.php");
+    require_once("../Utilsa/Utilsa.php");
+    require_once("../view/ViewTemplate.php");
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,30 +17,34 @@
 </head>
 
 <body>
-    <div class="alert alert-primary" role="alert">
-        A simple primary alert—check it out!
-    </div>
-    <i class="fas fa-address-book"></i>
     <?php
-    require_once ('../view/ViewUser.php');
-    require_once ("../model/ModelUser.php");
-    // ViewUser::ajoutUser();      // pour appeler --> nomclasse - ensuite : : et fonction dans la classe
-    // ModelUser::ajoutUser("Arsen", "Raziyev", "arsen@test.com", "0778777666", "arsen", "arsen", "arsen");
-    ?>
+    
+    ViewTemplate::menu();
+    if (isset($_POST['valider'])) {
+        $donnees = [$_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['tel'], $_POST['adresse'], $_POST['description']];
+        var_dump($_POST["nom"]);
+        $types = [ "nom", "prenom", "email", "tel", "non", "non"];      // vérification - adresse et description n'ont aucune vérification à faire
 
-    <!-- exo: dans le controller, on va tester si le form a été validé, 
-    on appelle la methode d insertion, sinon on appelle la methode qui affiche le formulaire -->
-    <?php
-    if (isset($_POST["valider"])) {         // isset - teste si cette variable a une valeur
-        ModelUser::ajoutUser($_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['tel'], $_POST['adresse'], $_POST['photo'], $_POST['description']);
-    ?>
-        <div class="alert alert-primary" role="alert">
-            TOUT EST COOL !
-        </div>
-    <?php
+        $data = Utilsa::valider($donnees, $types);
+
+        if ($data) {
+            $extensions = ["jpg", "jpeg", "png", "gif"];
+            $upload = Utilsa::upload($extensions, $_FILES['fichier']);
+            if ($upload['uploadOk']) {
+                $file_name = $upload['file_name'];
+                ModelUser::ajoutUser($data[0], $data[1], $data[2], $data[3], $data[4], $file_name, $data[5]);       // respecter l'ordre depuis ModelUser
+                ViewTemplate::alert("Les données sont insérées avec succès", "success", "listeusers.php");
+            } else {
+                ViewTemplate::alert($upload['errors'], "danger", htmlspecialchars($_SERVER['PHP_SELF']));
+            }
+        } else {
+            ViewUser::ajoutUser();
+        }
     } else {
         ViewUser::ajoutUser();
     }
+
+    ViewTemplate::footer();
     ?>
 
 
@@ -42,6 +52,7 @@
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
+    
 </body>
 
 </html>
