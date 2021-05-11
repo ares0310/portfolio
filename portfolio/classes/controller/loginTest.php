@@ -33,7 +33,7 @@ require_once "../view/ViewLogin.php";
             var_dump($table['password']);
             echo "Ok";
             $_SESSION["mail"] = $mail;
-    
+            var_dump($_SESSION["mail"]);
             if(password_verify($_POST["password"], $table["password"])){
                 
                 ViewTemplate::alert("Connexion effectuée", "primary", "Accueil.php");
