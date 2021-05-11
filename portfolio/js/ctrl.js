@@ -4,7 +4,8 @@ typesTab = {
   tel: /^[0-9]{8,}$/,
   photo: /^[\w]{2,}(.jpg|.jpeg|.png|.gif)$/,
   test: /^[a-zA-Z]+$/,
-  email:/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/,
+  // email:/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/,
+  
 };
 
 function validation(str, type) {
@@ -316,3 +317,58 @@ request.fail(function (http_error) {
   let code_label = http_error.statusText;
   alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
 })});
+
+
+
+
+
+function listeComp() {
+  let request = $.ajax({
+    type: "GET",
+    url: "ListeComp.php",
+    dataType: "html",
+  });
+
+  request.done(function (response) {
+    $("body").html(response);
+  });
+
+  request.fail(function (http_error) {
+    let server_msg = http_error.responseText;
+    let code = http_error.status;
+    let code_label = http_error.statusText;
+    alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+  });
+}
+
+
+//ajax modal viewcompt: suppression compt
+
+$(".supp-comp").click(function () {
+  $(".btn-supp").attr("href", "SuppComp.php?id=" + $(this).attr("id"));
+});
+$(".btn-supp").click(function (e) {
+  e.preventDefault();
+
+  let request = $.ajax({
+    type: "GET",
+    url: $(this).attr("href"),
+    dataType: "html",
+  });
+
+  request.done(function (reponse) {
+    $(".annuler").trigger("click"); //je génère un clic artficiel sur le bouton annuler $(".annuler").click(); cette methode marche aussi
+    listeComp();
+  });
+  request.fail(function (http_error) {
+    //Code à jouer en cas d'éxécution en erreur du script du PHP
+
+    let server_msg = http_error.responseText;
+    let code = http_error.status;
+    let code_label = http_error.statusText;
+    alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+  });
+});
+
+
+

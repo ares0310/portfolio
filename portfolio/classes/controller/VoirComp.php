@@ -18,7 +18,7 @@ require_once "../view/ViewTemplate.php";
 <?php
 require_once "../model/ModelComp.php";
 require_once "../view/ViewComp.php";
-require_once "../view/ViewTemplateUser.php";
+require_once "../view/ViewTemplate.php";
     ViewTemplate::menu();
     
     
@@ -46,6 +46,8 @@ require_once "../view/ViewTemplateUser.php";
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
+    <script src="../../js/ctrl.js"></script>
+    <script src="../../js/ctrl2.js"></script>
 </body>
 
 </html>

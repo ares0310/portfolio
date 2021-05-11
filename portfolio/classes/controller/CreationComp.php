@@ -23,8 +23,8 @@
 
     if (isset($_POST['ajout'])) {
       
-            modelComp::ajoutComp($_POST['nom'], $_POST['domaine'], $_POST['description'], $_POST['niveau']);
-            viewTemplate::alert('Votre compétence à bien été ajouté', 'formulaire good', 'listeComp.php');
+            ModelComp::ajoutComp($_POST['nom'], $_POST['domaine'], $_POST['description'], $_POST['niveau']);
+            viewTemplate::alert('Votre compétence à bien été ajouté', 'primary', 'listeComp.php');
         }
      else {
 
@@ -44,6 +44,7 @@
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
+    <script src="../../js/ctrl.js"></script>
 </body>
 
 </html>
