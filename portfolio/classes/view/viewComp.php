@@ -110,14 +110,14 @@ class ViewComp
                 <input type="hidden" name="id" id="id" value="<?php echo $selectedComp["id"] //on va enregitre id dans value hidden pour quil soit pas visible 
                                                                 ?>" />
                 <div class=" form-group mt-3">
-                    <input type="text" name="nom" id="nom2" value="<?php echo $selectedComp['nom'] ?>" class="form-control" aria-describedby="nom" placeholder="Nom" required>
+                    <input type="text" name="nom" id="nom" value="<?php echo $selectedComp['nom'] ?>" class="form-control" aria-describedby="nom" placeholder="Nom" required>
                 </div>
                 <div class=" form-group">
-                    <input type="text" name="domaine" id="domaine2" value="<?php echo $selectedComp['domaine'] ?>" class="form-control" aria-describedby="domaine" placeholder="Domaine" required>
+                    <input type="text" name="domaine" id="domaine" value="<?php echo $selectedComp['domaine'] ?>" class="form-control" aria-describedby="domaine" placeholder="Domaine" required>
                 </div>
-                <textarea class="form-control" name="description" id="description2" rows="3"><?php echo $selectedComp['description'] ?></textarea><br>
+                <textarea class="form-control" name="description" id="description" rows="3"><?php echo $selectedComp['description'] ?></textarea><br>
                 <div class=" form-group">
-                    <input type="text" name="niveau" id="niveau2" value="<?php echo $selectedComp['niveau'] ?>" class="form-control" aria-describedby="lien" placeholder="Lien">
+                    <input type="text" name="niveau" id="niveau" value="<?php echo $selectedComp['niveau'] ?>" class="form-control" aria-describedby="lien" placeholder="Lien">
                 </div>
                 <button type="submit" href="" class="btn btn-outline-success mb-3" name="modif">Modifier</button>
                 <button type="reset" class="btn btn-outline-danger ml-2 mb-3">Annuler</button>

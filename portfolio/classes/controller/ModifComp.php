@@ -21,36 +21,25 @@ require_once "../view/ViewUser.php";
 
     ViewTemplate::menu();
 
-    // if (isset($_GET['id'])) {
-    //     echo "lol";
-    //     if (ModelComp::afficheID($_GET['id'])) {
-            
-    //         ViewComp::modifComp($_GET['id']);
-    //         echo "123";
-    //     } else {
-    //         ViewTemplate::alert("La reference n'existe pas.", "danger", "ListeRef.php");
-    //     }
-    // } else {
-        
-    //     if (isset($_POST['modif'])) {
-    //         echo "jfoizhgiujdilghedgjoi";
-    //         if (isset($_POST['id']) && ModelComp::afficheID($_POST['id'])) {
-    //             echo "1878787";
-                // ModelComp::ModifComp($_POST["id"],$_POST['nom'], $_POST['domaine'], $_POST['description'], $_POST['niveau']);
-    //             ViewTemplate::alert("Modif faite avec succès.", "success", "ListeRef.php");
-    //         } else {
-               
-    //             ViewTemplate::alert("Aucune donnée n'a été transmise..", "danger", "ListeRef.php");
-    //         }
-    //     } else
-    //         ViewTemplate::alert("Aucune donnée n'a été transmise...", "danger", "ListeRef.php");
-    // }
-    if(isset($_POST["modif"])){
-        ModelComp::modifComp($_POST["id"],$_POST['nom'], $_POST['domaine'], $_POST['description'], $_POST['niveau']);
+    if (isset($_GET['id'])) {
+        if (ModelComp::afficheID($_GET['id'])) {
+            ViewComp::modifComp($_GET['id']);
+        } else {
+            ViewTemplate::alert("La reference n'existe pas.", "danger", "ListeReference.php");
+        }
     } else {
-        echo "erreur";
+        if (isset($_POST['modif'])) {
+            if (isset($_POST['id']) && ModelComp::afficheID($_POST['id'])) {
+                ModelComp::modifComp($_POST['id'], $_POST['nom'], $_POST['domaine'], $_POST['description'], $_POST['niveau']);
+                ViewTemplate::alert("La modification a été faite avec succès.", "success", "ListeReference.php");
+            } else {
+                ViewTemplate::alert("Aucune donnée n'a été transmise.", "danger", "ListeReference.php");
+            }
+        } else {
+            ViewTemplate::alert("Aucune donnée n'a été transmise.", "danger", "ListeReference.php");
+        }
     }
-   
+
 
 
 
