@@ -14,9 +14,9 @@
     <?php
     require_once '../view/ViewTemplate.php';
     require_once "../model/ModelEtab.php";
-    require_once "../view/ViewEtab";
+    require_once "../view/ViewEtab.php";
     ViewTemplate::menu();
-    ViewTypeRef::listeTypeRef();
+    ViewEtab::listEtab();
     ViewTemplate::footer();
     ?>
 

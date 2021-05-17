@@ -1,7 +1,7 @@
 <?php
 require_once '../view/ViewTemplate.php';
 require_once "../model/ModelEtab.php";
-require_once "../view/ViewEtab";
+require_once "../view/ViewEtab.php";
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@ require_once "../view/ViewEtab";
     } else {
         if(isset($_POST["modif"])){
             if(isset($_POST["id"])&& ModelEtab::getEtabId($_POST["id"])){
-                ModelEtab::modifEtab($_POST["id"], $_POST["type_ref"], $_POST["support"]);
+                ModelEtab::modifEtab($_POST["id"], $_POST["nom"], $_POST["ville"], $_POST["secteur"]);
                 ViewTemplate::alert("GG", "success", "listEtab.php");
             } else {
                 ViewTemplate::alert("Donnée transmise fausse", "danger", "listEtab.php");

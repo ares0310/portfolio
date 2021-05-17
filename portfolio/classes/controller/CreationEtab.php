@@ -18,7 +18,7 @@
 
     require_once '../view/ViewTemplate.php';
     require_once "../model/ModelEtab.php";
-    require_once "../view/ViewEtab";
+    require_once "../view/ViewEtab.php";
 
 
     if (isset($_POST['ajout'])) {
@@ -27,9 +27,7 @@
             ViewTemplate::alert('Votre établissement à bien été ajouté', 'primary', 'listEtab.php');
         }
      else {
-
         ViewEtab::ajoutEtab();
-    
     }
 
     ?>
