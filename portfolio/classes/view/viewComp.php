@@ -102,10 +102,12 @@ class ViewComp
     public static function modifComp($id)
     {
         $selectedComp = ModelComp::afficheID($id); //var_dump($selectComp); // on memorice la fuction dans le var 
-        var_dump($selectedComp);
+        
     ?>
         <div class="container mt-3">
             <div id="erreurs"></div>
+            <!-- tentative de faire apparaitre un loader -->
+            <!-- <div id="loader" style="display:none"><img src="../../images/ajax-loader.gif" width="50" height="10"/></div>    --> 
             <form name="modif_comp" id="modif_comp" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>">
                 <input type="hidden" name="id" id="id" value="<?php echo $selectedComp["id"] //on va enregitre id dans value hidden pour quil soit pas visible 
                                                                 ?>" />

@@ -1,5 +1,5 @@
 <?php
-
+session_start(); // 1ere insctruction
 require_once "../view/ViewInscription.php";
 require_once "../view/ViewTemplate.php";
 require_once "../model/ModelInscription.php";
@@ -21,7 +21,7 @@ require_once "../view/ViewLogin.php";
 <body>
     <?php
     ViewTemplate::menu();
-    session_start();
+    
     
     if (isset($_POST["connexion"])) {
         // $verif = password_hash($_POST['password'],  PASSWORD_DEFAULT );

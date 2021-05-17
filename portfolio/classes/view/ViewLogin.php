@@ -5,6 +5,7 @@ class ViewLogin
     public static function connexionForm()
     {
 ?>
+    <div id="session"></div>
     <div id="erreurs"></div>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" id="formConnexion" method="post">
             <div class="form-group">

@@ -22,7 +22,7 @@ require_once "../view/ViewAccueil.php";
 <body>
     <?php
     ViewTemplate::menu();
-    
+    var_dump($_SESSION);
     ViewAccueil::Accueil();
     if(isset($_SESSION["mail"])){
         // echo "bienvenu" . " " . $_SESSION["mail"];

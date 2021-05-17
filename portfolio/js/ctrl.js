@@ -302,13 +302,13 @@ $("#formConnexion").submit(function (e) {
 
 
 let request = $.ajax({
-  type: "GET",
-  url: "Accueil.php",
+  type: "POST",
+  url: "loginTest.php",
   dataType: "html",
 });
 
 request.done(function (response) {
-  $("body").html(response);
+  $("#session").html(response);
 });
 
 request.fail(function (http_error) {

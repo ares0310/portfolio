@@ -25,7 +25,9 @@ $(".modif-comp").click(function (e) {
 
 //formmodifcomp:
 $("#modif_comp").submit(function (e) {
+  // $("#loader").show();
   e.preventDefault();
+
   let donnees = {
     id: $("#id").val(),
     nom: $("#nom").val(),
@@ -43,6 +45,7 @@ $("#modif_comp").submit(function (e) {
   });
 
   request.done(function (response) {
+    // $("#loader").hide();
     listeComp();
 
   });
