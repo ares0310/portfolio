@@ -76,3 +76,30 @@ function listEtab() {
     alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
   });
 }
+
+// ----------------- suppression Etab
+$(".supp-etab").click(function () {
+  $(".btn-supp").attr("href", "SuppComp.php?id=" + $(this).attr("id"));
+});
+$(".btn-supp").click(function (e) {
+  e.preventDefault();
+
+  let request = $.ajax({
+    type: "GET",
+    url: $(this).attr("href"),
+    dataType: "html",
+  });
+
+  request.done(function (reponse) {
+    $(".annuler").trigger("click"); //je génère un clic artficiel sur le bouton annuler $(".annuler").click(); cette methode marche aussi
+    listeComp();
+  });
+  request.fail(function (http_error) {
+    //Code à jouer en cas d'éxécution en erreur du script du PHP
+
+    let server_msg = http_error.responseText;
+    let code = http_error.status;
+    let code_label = http_error.statusText;
+    alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+  });
+});

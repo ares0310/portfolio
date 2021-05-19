@@ -36,6 +36,30 @@ class ViewTemplate
                     <li class="nav-item">
                         <a class="nav-link text-white" href="listeTypeSoc.php">Liste RS</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="CreationComp.php">Création compétence</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="listeComp.php">Liste Comp</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="CreationReference.php">Création référence</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="listeRef.php">Liste Référence</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="CreationEtab.php">Création établissement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="listEtab.php">Liste d'établissements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="CreationSocial.php">Création Social</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="listeSoc.php">Liste Social</a>
+                    </li>
                 </ul>
             </div>
         </nav>

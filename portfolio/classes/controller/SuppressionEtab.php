@@ -37,6 +37,7 @@ require_once "../view/ViewEtab.php";
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
+    <script src="../../js/ctrl3.js"></script>
 </body>
 
 </html>

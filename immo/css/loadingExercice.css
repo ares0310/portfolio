@@ -1,0 +1,30 @@
+
+body {
+    background-color: black;
+    color: white;
+}
+
+header {
+    height: 200px;
+}
+
+#btn1 {
+    font-size: 4em;
+}
+
+p {
+    font-size: 2em;
+}
+
+#play {
+    display: none
+}
+
+#play2 {
+    display: none
+}
+
+#play3 {
+    display : none
+}
+

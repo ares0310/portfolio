@@ -1,6 +1,5 @@
 <?php
 require_once "../model/ModelEtab.php";
-require_once "../model/connexion.php";
 class ViewEtab
 {
     public static function ajoutEtab()
