@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../css/all.min.css" />
     <link rel="stylesheet" href="../../css/styles.css" />
+    <!-- <link rel="stylesheet" href="../../css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="../../css/all.min.css" />
+    <!-- template ajout -->
+    <link rel="stylesheet" href="../../css/style.css" /> 
+    
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="../../photos/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../../photos/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <!-- Colors CSS -->
+    <!-- <link rel="stylesheet" href="../../css/colors.css"> -->
+    <!-- ALL VERSION CSS -->
+    <link rel="stylesheet" href="../../css/versions.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../../css/custom.css">
+
+    <!-- Modernizer for Portfolio -->
+    <script src="../../js/modernizer.js"></script>
+<!-- FIN template ajout -->
     
     <title>HTML</title>
 </head>
@@ -20,12 +43,21 @@
     require_once "../view/viewTemplate.php";
     ViewTemplate::menu();
     if(isset($_POST["valider"])){
-        Login::inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST["tel"], 0, 0, 0, rand(10000, 99999));
-        
-        ViewTemplate::alert("Inscription faite avec succès, pour continuer", "success", "confirmationMail.php");
+        // $mail = Login::getEmail($_POST["mail"]);
+
+        if(Login::getEmail($_POST["mail"])){
+            // mail existe = erreur
+            ViewTemplate::alert("Mail déjà pris", "danger", "controllerInscription.php");
+        } else {
+            // msg mail existe pas, donc success
+            $token = rand(10000, 99999);
+            Login::inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST["tel"], 0, 0, 0, $token);
+            ViewTemplate::alert("Inscription faite avec succès, pour continuer", "success", "confirmationMail.php?mail=" . $_POST["mail"] . "&token=" . $token );
+        }
     }else{
         ViewInscription::inscriptionForm();
     }
+    ViewTemplate::footer();
 
     
 

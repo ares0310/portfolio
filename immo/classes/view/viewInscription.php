@@ -5,7 +5,7 @@ class ViewInscription
     public static function inscriptionForm()
     {
 ?>
-        <div class="container mt-5">
+        <div class="container p-5">
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <div class="form-group">
                     <input type="text" name="nom" class="form-control" id="name" placeholder="Nom">

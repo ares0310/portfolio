@@ -4,9 +4,6 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1  shrink-to-fit=no" />
-    <link rel="stylesheet" href="../../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../css/all.min.css" />
-    <link rel="stylesheet" href="../../css/styles.css" />
     <!-- <link rel="stylesheet" href="../../css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="../../css/all.min.css" />
     <!-- template ajout -->
@@ -35,31 +32,34 @@
 
 <body>
     
+
     <?php
 
     require_once "../model/modelInscription.php";
     require_once "../view/viewInscription.php";
     require_once "../view/viewTemplate.php";
     ViewTemplate::menu();
+    if (isset($_POST["valider"])) {
+        // $mail = Login::getEmail($_POST["mail"]);
 
-    ViewTemplate::alert("Vous vous êtes inscrit avec succès", "success", "accueil.php");
-    var_dump($_GET["mail"]);
-    if(isset($_GET["mail"]) && isset($_GET["token"])){
-        // model confirme
-        Login::confirmation($_GET["mail"], $_GET["token"]);
+        if (Login::getEmail($_POST["mail"])) {
+            // mail existe = erreur
+            ViewTemplate::alert("Mail déjà pris", "danger", "controllerInscription.php");
+        } else {
+            // msg mail existe pas, donc success
+            $token = rand(10000, 99999);
+            Login::inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST["tel"], 0, 0, 0, $token);
+            ViewTemplate::alert("Inscription faite avec succès, pour continuer", "success", "confirmationMail.php?mail=" . $_POST["mail"] . "&token=" . $token);
+        }
     } else {
-        ViewTemplate::alert("Confirmation impossible", "danger", "accueil.php");
+        ViewInscription::inscriptionForm();
     }
-
     ViewTemplate::footer();
 
 
-
-    
-
     ?>
 
-
+    
 
 
 
@@ -69,7 +69,14 @@
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
-    <script src="../../js/ctrl.js"></script>
+    <!-- <script src="../../js/ctrl.js"></script> -->
+    <!-- ALL JS FILES -->
+    <script src="../../js/all.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="../../js/custom.js"></script>
+    <script src="../../js/portfolio.js"></script>
+    <script src="../../js/hoverdir.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 </body>
 
 </html>
