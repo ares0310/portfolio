@@ -1,47 +1,49 @@
-// typesTab = {
-//   nom: /^[a-zA-z\s\p{L}]{2,}$/u,
-//   prenom: /^[a-zA-z\s\p{L}]{2,}$/u,
-//   tel: /^[0-9]{8,}$/,
-//   photo: /^[\w]{2,}(.jpg|.jpeg|.png|.gif)$/,
-//   test: /^[a-zA-Z]+$/,
-//   // email:/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/,
+
+typesTab = {
+  nom: /^[a-zA-z\s\p{L}]{2,}$/u,
+  prenom: /^[a-zA-z\s\p{L}]{2,}$/u,
+  tel: /^[0-9]{8,}$/,
+  photo: /^[\w]{2,}(.jpg|.jpeg|.png|.gif)$/,
+  test: /^[a-zA-Z]+$/,
+  mail:/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/,
   
-// };
+};
 
-// function validation(str, type) {
-//   let valide = false;
-//   if (typesTab[type].test(str)) {
-//     valide = true;
-//   }
-//   valide === true
-//     ? (message = "")
-//     : (message = "Le champ " + type + " n'est pas au format demandé.<br/>");
-//   errorsTab = [valide, message];
-//   return errorsTab;
-// }
+function validation(str, type) {
+  let valide = false;
+  if (typesTab[type].test(str)) {
+    valide = true;
+  }
+  valide === true
+    ? (message = "")
+    : (message = "Le champ " + type + " n'est pas au format demandé.<br/>");
+  errorsTab = [valide, message];
+  return errorsTab;
+}
 
-// function valider(donnees, types, e) {
-//   let erreurs = "";
+function valider(donnees, types, e) {
+  let erreurs = "";
 
-//   for (i = 0; i < donnees.length; i++) {
-//     tab = validation(donnees[i], types[i]);
-//     if (!tab[0]) {
-//       erreurs += tab[1];
-//     }
-//   }
-//   if (erreurs) {
-//     const html =
-//       '<div class="alert alert-danger" role="alert"> ' + erreurs + "</div>";
-//     $("#erreurs").html(html);
-//     e.preventDefault();
-//   }
-// }
+  for (i = 0; i < donnees.length; i++) {
+    tab = validation(donnees[i], types[i]);
+    if (!tab[0]) {
+      erreurs += tab[1];
+    }
+  }
+  if (erreurs) {
+    const html =
+      '<div class="alert alert-danger" role="alert"> ' + erreurs + "</div>";
+    $("#erreurs").html(html);
+    e.preventDefault();
+  }
+}
 
-// $("#ajout_user").submit(function (e) {
-//   let donnees = [$("#nom").val(), $("#prenom").val(), $("#tel").val()];
-//   let types = ["nom", "prenom", "tel"];
-//   valider(donnees, types, e);
-// });
+$("#ajout_user").submit(function (e) {
+    // e.preventDefault();
+  let donnees = [$("#nom").val(), $("#prenom").val(), $("#mail").val(), $("#tel").val()];
+  let types = ["nom", "prenom", "mail", "tel"];
+  valider(donnees, types, e);
+});
 
 // // solution avec MAXENCE
 // // function test(par1,par2) {
