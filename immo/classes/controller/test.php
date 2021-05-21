@@ -7,8 +7,8 @@
     <!-- <link rel="stylesheet" href="../../css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="../../css/all.min.css" />
     <!-- template ajout -->
-    <link rel="stylesheet" href="../../css/style.css" /> 
-    
+    <link rel="stylesheet" href="../../css/style.css" />
+
     <!-- Site Icons -->
     <link rel="shortcut icon" href="../../photos/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="../../photos/apple-touch-icon.png">
@@ -26,30 +26,42 @@
 
     <!-- Modernizer for Portfolio -->
     <script src="../../js/modernizer.js"></script>
-<!-- FIN template ajout -->
+    <!-- FIN template ajout -->
     <title>HTML</title>
 </head>
 
 <body>
-    
+
 
     <?php
 
     require_once "../model/modelInscription.php";
     require_once "../view/viewInscription.php";
     require_once "../view/viewTemplate.php";
+    require_once "../utils/utils.php";
+
     ViewTemplate::menu();
     if (isset($_POST["valider"])) {
-        // $mail = Login::getEmail($_POST["mail"]);
 
-        if (Login::getEmail($_POST["mail"])) {
-            // mail existe = erreur
-            ViewTemplate::alert("Mail déjà pris", "danger", "controllerInscription.php");
+        $donnees = [$_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password'], $_POST['tel']];
+        // var_dump($donnees);
+        $types = ["nom", "prenom", "mail", "password", "tel"];
+        $data = Utils::valider($donnees, $types);
+
+        if ($data) {
+            // si data est bon
+            
+            if (!ModelUser::getEmail($_POST["mail"])) {
+                // mail existe pas = success
+                $token = rand(10000, 99999);
+                // ModelUser::inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST["tel"], 0, 0, 0, $token);
+                ViewTemplate::alert("Inscription faite avec succès, pour continuer", "success", "confirmationMail.php?mail=" . $_POST["mail"] . "&token=" . $token);
+            } else {
+                // msg mail existe pas, donc success
+                ViewTemplate::alert("Mail déjà pris", "danger", "controllerInscription.php");
+            }
         } else {
-            // msg mail existe pas, donc success
-            $token = rand(10000, 99999);
-            Login::inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST["tel"], 0, 0, 0, $token);
-            ViewTemplate::alert("Inscription faite avec succès, pour continuer", "success", "confirmationMail.php?mail=" . $_POST["mail"] . "&token=" . $token);
+            ViewTemplate::alert("Inscription impossible", "danger", "controllerInscription.php");
         }
     } else {
         ViewInscription::inscriptionForm();
@@ -59,7 +71,7 @@
 
     ?>
 
-    
+
 
 
 

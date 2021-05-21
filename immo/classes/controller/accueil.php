@@ -30,7 +30,6 @@
     <!-- Modernizer for Portfolio -->
     <script src="../../js/modernizer.js"></script>
 <!-- FIN template ajout -->
-    
     <title>HTML</title>
 </head>
 
@@ -41,35 +40,17 @@
     require_once "../model/modelUser.php";
     require_once "../view/viewUser.php";
     require_once "../view/viewTemplate.php";
-    require_once "../utils/utils.php";
-
     ViewTemplate::menu();
-    if (isset($_POST["valider"])) {
+?>
+    <h1>Bienvenue à l'accueil</h1>
 
-        $donnees = [$_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password'], $_POST['tel']];
-        // var_dump($donnees);
-        $types = ["nom", "prenom", "mail", "password", "tel"];
-        $data = Utils::valider($donnees, $types);
 
-        if ($data) {
-            // si data est bon
-            
-            if (!ModelUser::getEmail($_POST["mail"])) {
-                // mail existe pas = success
-                $token = rand(10000, 99999);
-                ModelUser::inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST["tel"], 0, 0, 0, $token);
-                ViewTemplate::alert("Inscription faite avec succès, pour continuer", "success", "confirmationMail.php?mail=" . $_POST["mail"] . "&token=" . $token);
-            } else {
-                // msg mail existe pas, donc success
-                ViewTemplate::alert("Mail déjà pris", "danger", "controllerInscription.php");
-            }
-        } else {
-            ViewTemplate::alert("Inscription impossible", "danger", "controllerInscription.php");
-        }
-    } else {
-        ViewUser::inscriptionForm();
-    }
+<?php
+    
+
     ViewTemplate::footer();
+
+
 
     
 
@@ -85,14 +66,7 @@
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
-    <!-- <script src="../../js/ctrl.js"></script> -->
-    <!-- ALL JS FILES -->
-    <script src="../../js/all.js"></script>
-    <!-- ALL PLUGINS -->
-    <script src="../../js/custom.js"></script>
-    <script src="../../js/portfolio.js"></script>
-    <script src="../../js/hoverdir.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="../../js/ctrl.js"></script>
 </body>
 
 </html>

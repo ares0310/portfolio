@@ -1,7 +1,7 @@
 <?php 
 require_once "connexion.php";
 
-class Login {
+class ModelUser {
     public static function inscription($nom, $prenom, $mail, $pass, $tel, $role, $confirme, $actif, $token){
         $idcon = connexion();
         $requete = $idcon -> prepare("INSERT INTO user VALUES (null, :nom, :prenom, :mail, :pass, :tel, :role, :confirme, :actif, :token)");
@@ -27,7 +27,7 @@ class Login {
     // confirmer le compte en remplaçant 0 par 1
     public static function confirmation($mail, $token){
         $idcon = connexion();
-        $requete = $idcon -> prepare("UPDATE user SET confirme = '1' WHERE mail = :mail AND token = :token");
+        $requete = $idcon -> prepare("UPDATE user SET confirme = '1', actif = '1' WHERE mail = :mail AND token = :token");
         $requete -> execute([
             ":mail" => $mail,
             ":token" => $token

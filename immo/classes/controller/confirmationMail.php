@@ -37,8 +37,8 @@
     
     <?php
 
-    require_once "../model/modelInscription.php";
-    require_once "../view/viewInscription.php";
+    require_once "../model/modelUser.php";
+    require_once "../view/viewUser.php";
     require_once "../view/viewTemplate.php";
     ViewTemplate::menu();
 
@@ -46,7 +46,7 @@
     var_dump($_GET["mail"]);
     if(isset($_GET["mail"]) && isset($_GET["token"])){
         // model confirme
-        Login::confirmation($_GET["mail"], $_GET["token"]);
+        ModelUser::confirmation($_GET["mail"], $_GET["token"]);
     } else {
         ViewTemplate::alert("Confirmation impossible", "danger", "accueil.php");
     }

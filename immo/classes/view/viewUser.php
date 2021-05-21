@@ -1,6 +1,6 @@
 <?php
-require_once "../model/modelInscription.php";
-class ViewInscription
+require_once "../model/modelUser.php";
+class ViewUser
 {
     public static function inscriptionForm()
     {
