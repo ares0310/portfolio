@@ -56,11 +56,13 @@
             
             if (!ModelUser::getEmail($_POST["mail"])) {
                 // mail existe pas = success
-                $token = rand(10000, 99999);
-                ModelUser::inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST["tel"], 0, 0, 0, $token);
-                ViewTemplate::alert("Inscription faite avec succès, pour continuer", "success", "confirmationMail.php?mail=" . $_POST["mail"] . "&token=" . $token);
+                $token = uniqid();
+                // ModelUser::inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST["tel"], 0, 0, 0, $token);
+                ModelUser::inscription($data[0], $data[1], $data[2], password_hash($data[3], PASSWORD_DEFAULT), $data[4], 0, 0, 0, $token);
+                
+                ViewTemplate::alert("Inscription faite avec succès, pour valider votre compte", "success", "confirmationMail.php?mail=" . $_POST["mail"] . "&token=" . $token);
             } else {
-                // msg mail existe pas, donc success
+                // msg mail existe pas, donc
                 ViewTemplate::alert("Mail déjà pris", "danger", "controllerInscription.php");
             }
         } else {

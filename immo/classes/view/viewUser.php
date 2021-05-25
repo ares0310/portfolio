@@ -30,6 +30,25 @@ class ViewUser
         </div>
 <?php
     }
+    public static function connexionForm(){
+
+        ?>
+        <div class="container p-5">
+            <div id="erreurs"></div>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" id="connexion_user" method="post">
+                    <div class="form-group">
+                        <input type="email" name="mail" class="form-control" id="mail" aria-describedby="emailHelp" placeholder="Mail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="password">
+                    </div>
+                    <button type="submit" id="connexion" name="connexion" class="btn btn-primary">Connexion</button>
+                </form>
+            
+        </div>
+<?php
+
+    }
 }
 
 

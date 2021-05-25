@@ -33,6 +33,7 @@ session_start();
     <!-- Modernizer for Portfolio -->
     <script src="../../js/modernizer.js"></script>
 <!-- FIN template ajout -->
+    
     <title>HTML</title>
 </head>
 
@@ -43,18 +44,35 @@ session_start();
     require_once "../model/modelUser.php";
     require_once "../view/viewUser.php";
     require_once "../view/viewTemplate.php";
+    require_once "../utils/utils.php";
+
     ViewTemplate::menu();
-    if(isset($_SESSION["mail"])){
-        // echo "bienvenu" . " " . $_SESSION["mail"];
-        
-            echo ("welcome: " . $_SESSION["mail"] . " <br>  <a style='color:white;' role='button' class='btn btn-danger' href='disconnect.php' >Logout</a> ");
+    if (isset($_POST["connexion"])) {
+        $mail = $_POST["mail"];
+        // var_dump($_POST["mail"]);
+        $table = ModelUser::getEmail($_POST["mail"]);
+        // var_dump($table[$_POST["mail"]]);
+
+        if(isset($table["mail"])){
+            // var_dump($table['password']);
+            if(password_verify($_POST["password"], $table["pass"])){
+                if($table["actif"]==1 && $table["confirme"]==1){
+                    ViewTemplate::alert("Connexion effectuée", "primary", "Accueil.php");
+                $_SESSION["mail"] = $mail;
+                } else {
+                    ViewTemplate::alert("Compte inactif", "danger", "confirmationMail.php");
+                }
+                
+            } else {
+                ViewTemplate::alert("Connexion impossible", "danger", "Accueil.php");
+            }
+        } else {
+            ViewTemplate::alert("Connexion Impossible car mail introuvable", "danger", "Accueil.php");
+        }
+    } else {
+        ViewUser::connexionForm();
     }
-?>
-<h1>Accueil</h1>
-<?php
     ViewTemplate::footer();
-
-
 
     
 
@@ -71,6 +89,13 @@ session_start();
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
     <script src="../../js/ctrl.js"></script>
+    <!-- ALL JS FILES -->
+    <script src="../../js/all.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="../../js/custom.js"></script>
+    <script src="../../js/portfolio.js"></script>
+    <script src="../../js/hoverdir.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 </body>
 
 </html>

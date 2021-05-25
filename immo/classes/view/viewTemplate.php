@@ -33,8 +33,8 @@ class ViewTemplate
                 </div>
                 <div id="navbar" class="navbar row">
                     <a class="mr-5" href="controllerInscription.php">Inscription</a>
-                    <a class="mr-5" href="controllerInscription.php">Se connecter</a>
-                    <a class="mr-5" href="controllerInscription.php">Accueil</a>
+                    <a class="mr-5" href="controllerConnexion.php">Se connecter</a>
+                    <a class="mr-5" href="accueil.php">Accueil</a>
                     <!-- <ul class="nav navbar-nav navbar-right row">
                         <li><a class="active" href="index.html">Home</a></li>
                         <li><a href="about.html">About us </a></li>
@@ -121,11 +121,11 @@ class ViewTemplate
                             <h3>Social</h3>
                         </div>
                         <ul class="footer-links">
-                            <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
-                            <li><a href="#"><i class="fa fa-github"></i> Github</a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i> Dribbble</a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i> Pinterest</a></li>
+                            <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                            <li><a href="#"><i class="fab fa-github"></i> Github</a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                            <li><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li>
+                            <li><a href="#"><i class="fab fa-pinterest"></i> Pinterest</a></li>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->

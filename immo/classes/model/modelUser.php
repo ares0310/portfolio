@@ -33,6 +33,12 @@ class ModelUser {
             ":token" => $token
         ]);
     }
+
+    public static function activation($mail){
+        $idcon = connexion();
+        $requete = $idcon -> prepare("SELECT * FROM user WHERE mail = :mail");
+        $requete -> execute([":mail" => $mail]);
+    }
 }
 
 

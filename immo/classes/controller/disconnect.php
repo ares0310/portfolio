@@ -44,14 +44,9 @@ session_start();
     require_once "../view/viewUser.php";
     require_once "../view/viewTemplate.php";
     ViewTemplate::menu();
-    if(isset($_SESSION["mail"])){
-        // echo "bienvenu" . " " . $_SESSION["mail"];
-        
-            echo ("welcome: " . $_SESSION["mail"] . " <br>  <a style='color:white;' role='button' class='btn btn-danger' href='disconnect.php' >Logout</a> ");
-    }
-?>
-<h1>Accueil</h1>
-<?php
+    session_unset();
+    session_destroy();
+    ViewTemplate::alert("Vous êtes déconnecté", "success", "Accueil.php");
     ViewTemplate::footer();
 
 
