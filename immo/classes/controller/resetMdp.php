@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -30,7 +33,6 @@
     <!-- Modernizer for Portfolio -->
     <script src="../../js/modernizer.js"></script>
 <!-- FIN template ajout -->
-    
     <title>HTML</title>
 </head>
 
@@ -41,37 +43,21 @@
     require_once "../model/modelUser.php";
     require_once "../view/viewUser.php";
     require_once "../view/viewTemplate.php";
-    require_once "../utils/utils.php";
-
     ViewTemplate::menu();
-    if (isset($_POST["valider"])) {
-
-        $donnees = [$_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password'], $_POST['tel']];
-        // var_dump($donnees);
-        $types = ["nom", "prenom", "mail", "password", "tel"];
-        $data = Utils::valider($donnees, $types);
-
-        if ($data) {
-            // si data est bon
-            
-            if (!ModelUser::getEmail($_POST["mail"])) {
-                // (unicité) mail existe pas = success
-                $token = uniqid();
-                // ModelUser::inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST["tel"], 0, 0, 0, $token);
-                ModelUser::inscription($data[0], $data[1], $data[2], password_hash($data[3], PASSWORD_DEFAULT), $data[4], 0, 0, 0, $token);
-                
-                ViewTemplate::alert("Inscription faite avec succès, pour valider votre compte", "success", "confirmationMail.php?mail=" . $_POST["mail"] . "&token=" . $token);
-            } else {
-                // msg mail existe pas, donc
-                ViewTemplate::alert("Mail déjà pris", "danger", "controllerInscription.php");
-            }
+    if(isset($_POST["change"])){
+        if(ModelUser::getEmail($_POST["mail"])){
+            $token = uniqid();
+            ModelUser::tokenReset($_POST["mail"], $token);
+            ViewTemplate::alert("Mail trouvé, pour changer votre mot de passe", "success", "changementMdp.php?mail=" . $_POST["mail"] . "&token=" . $token);
         } else {
-            ViewTemplate::alert("Inscription impossible", "danger", "controllerInscription.php");
+            ViewTemplate::alert("Mail introuvable", "danger", "accueil.php");
         }
     } else {
-        ViewUser::inscriptionForm();
+        ViewUser::reset();
     }
     ViewTemplate::footer();
+
+
 
     
 
@@ -88,13 +74,6 @@
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
     <script src="../../js/ctrl.js"></script>
-    <!-- ALL JS FILES -->
-    <script src="../../js/all.js"></script>
-    <!-- ALL PLUGINS -->
-    <script src="../../js/custom.js"></script>
-    <script src="../../js/portfolio.js"></script>
-    <script src="../../js/hoverdir.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 </body>
 
 </html>

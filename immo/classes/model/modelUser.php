@@ -33,11 +33,21 @@ class ModelUser {
             ":token" => $token
         ]);
     }
+    public static function tokenReset($mail, $token){
+        $idcon = connexion();
+        $requete = $idcon -> prepare("UPDATE user SET token = :token WHERE mail = :mail");
+        $requete -> execute([":mail" => $mail, ":token" => $token]);
+    }
 
     public static function activation($mail){
         $idcon = connexion();
         $requete = $idcon -> prepare("SELECT * FROM user WHERE mail = :mail");
         $requete -> execute([":mail" => $mail]);
+    }
+    public static function resetMdp($mail, $password){
+        $idcon = connexion();
+        $requete = $idcon -> prepare("UPDATE user SET pass = :password WHERE mail = :mail");
+        $requete -> execute([":mail" => $mail,":password" => $password]);
     }
 }
 

@@ -70,7 +70,7 @@ class ViewTemplate
     public static function footer()
     {
     ?>
-    <footer class="footer">
+    <footer class="fixed-bottom footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-sm-4 col-xs-12">
