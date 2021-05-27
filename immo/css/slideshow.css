@@ -2,7 +2,8 @@ html {
   min-height: 100%;
 }
 
-body, html {
+body,
+html {
   height: 100%;
 }
 
@@ -37,7 +38,7 @@ body, html {
   right: 0;
   opacity: 0;
   font-size: 4.0625em;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   text-transform: uppercase;
   color: #fff;
   -webkit-animation: titleAnimation 24s linear 1 0s;
