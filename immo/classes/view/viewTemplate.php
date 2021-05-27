@@ -18,24 +18,39 @@ class ViewTemplate
 
     public static function menu()
     {
+        session_start();
     ?>
         <header class="header  mb-5">
-        <nav class="megamenu navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <nav class="megamenu navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button> -->
-                    <a class="navbar-brand" href="index.html"><img src="../../photos/logo.png" alt="image"></a>
-                </div>
-                <div id="navbar" class="navbar row">
-                    <a class="mr-5" href="controllerInscription.php">Inscription</a>
-                    <a class="mr-5" href="controllerConnexion.php">Se connecter</a>
-                    <a class="mr-5" href="accueil.php">Accueil</a>
-                    <!-- <ul class="nav navbar-nav navbar-right row">
+                        <a class="navbar-brand" href="index.html"><img src="../../photos/logo.png" alt="image"></a>
+                    </div>
+                    <div id="navbar" class="navbar row">
+
+                        <?php
+                        if (isset($_SESSION["mail"])) {
+                            // echo "bienvenu" . " " . $_SESSION["mail"];
+
+                            echo ("welcome: " . $_SESSION["mail"] . " <br>  <a style='color:white;' role='button' class='btn btn-danger' href='disconnect.php' >Logout</a> ");
+                        } else {
+                        ?>
+
+                            <a class="mr-5" href="controllerInscription.php">Inscription</a>
+                            <a class="mr-5" href="controllerConnexion.php">Se connecter</a>
+
+                        <?php
+                        }
+                        ?>
+
+                        <a class="ml-5 mr-5" href="accueil.php">Accueil</a>
+                        <!-- <ul class="nav navbar-nav navbar-right row">
                         <li><a class="active" href="index.html">Home</a></li>
                         <li><a href="about.html">About us </a></li>
                         <li><a href="service.html">Service</a></li>
@@ -53,10 +68,10 @@ class ViewTemplate
                             </form>
                         </li>
                     </ul> -->
+                    </div>
                 </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
 
 
@@ -70,69 +85,69 @@ class ViewTemplate
     public static function footer()
     {
     ?>
-    <footer class="fixed-bottom footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <img src="images/logos/logo-realestate.png" alt="">
-                        </div>
-                        <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
-                        <p>Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
+        <footer class="fixed-bottom footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="widget clearfix">
+                            <div class="widget-title">
+                                <img src="images/logos/logo-realestate.png" alt="">
+                            </div>
+                            <p> Integer rutrum ligula eu dignissim laoreet. Pellentesque venenatis nibh sed tellus faucibus bibendum. Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+                            <p>Sed fermentum est vitae rhoncus molestie. Cum sociis natoque penatibus et magnis dis montes.</p>
+                        </div><!-- end clearfix -->
+                    </div><!-- end col -->
 
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>Info Link</h3>
-                        </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="widget clearfix">
+                            <div class="widget-title">
+                                <h3>Info Link</h3>
+                            </div>
 
-                        <ul class="twitter-widget footer-links">
-                            <li><a href="#"> Home </a></li>
-                            <li><a href="#"> About Us </a></li>
-                            <li><a href="#"> Services</a></li>
-                            <li><a href="#"> Gallery</a></li>
-                            <li><a href="#"> Properties</a></li>
-                            <li><a href="#"> Contact</a></li>
-                        </ul><!-- end links -->
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
+                            <ul class="twitter-widget footer-links">
+                                <li><a href="#"> Home </a></li>
+                                <li><a href="#"> About Us </a></li>
+                                <li><a href="#"> Services</a></li>
+                                <li><a href="#"> Gallery</a></li>
+                                <li><a href="#"> Properties</a></li>
+                                <li><a href="#"> Contact</a></li>
+                            </ul><!-- end links -->
+                        </div><!-- end clearfix -->
+                    </div><!-- end col -->
 
-                <div class="col-md-3 col-sm-3 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>Contact Details</h3>
-                        </div>
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="widget clearfix">
+                            <div class="widget-title">
+                                <h3>Contact Details</h3>
+                            </div>
 
-                        <ul class="footer-links">
-                            <li><a href="mailto:#">info@yoursite.com</a></li>
-                            <li><a href="#">www.yoursite.com</a></li>
-                            <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
-                            <li>+61 3 8376 6284</li>
-                        </ul><!-- end links -->
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
+                            <ul class="footer-links">
+                                <li><a href="mailto:#">info@yoursite.com</a></li>
+                                <li><a href="#">www.yoursite.com</a></li>
+                                <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
+                                <li>+61 3 8376 6284</li>
+                            </ul><!-- end links -->
+                        </div><!-- end clearfix -->
+                    </div><!-- end col -->
 
-                <div class="col-md-2 col-sm-2 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>Social</h3>
-                        </div>
-                        <ul class="footer-links">
-                            <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                            <li><a href="#"><i class="fab fa-github"></i> Github</a></li>
-                            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                            <li><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li>
-                            <li><a href="#"><i class="fab fa-pinterest"></i> Pinterest</a></li>
-                        </ul><!-- end links -->
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
+                    <div class="col-md-2 col-sm-2 col-xs-12">
+                        <div class="widget clearfix">
+                            <div class="widget-title">
+                                <h3>Social</h3>
+                            </div>
+                            <ul class="footer-links">
+                                <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                                <li><a href="#"><i class="fab fa-github"></i> Github</a></li>
+                                <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                                <li><a href="#"><i class="fab fa-dribbble"></i> Dribbble</a></li>
+                                <li><a href="#"><i class="fab fa-pinterest"></i> Pinterest</a></li>
+                            </ul><!-- end links -->
+                        </div><!-- end clearfix -->
+                    </div><!-- end col -->
 
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </footer><!-- end footer -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </footer><!-- end footer -->
         <div class="fixed-bottom bg-dark text-white text-center">
             Agence immo © <?php echo date("Y") ?>
         </div>

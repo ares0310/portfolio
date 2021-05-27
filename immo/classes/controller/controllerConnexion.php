@@ -1,5 +1,5 @@
 <?php 
-session_start();
+// session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,22 +49,20 @@ session_start();
     ViewTemplate::menu();
     if (isset($_POST["connexion"])) {
         $mail = $_POST["mail"];
-        // var_dump($_POST["mail"]);
         $table = ModelUser::getEmail($_POST["mail"]);
-        // var_dump($table[$_POST["mail"]]);
 
-        if(isset($table["mail"])){
-            // var_dump($table['password']);
+        if($table["mail"]){
+            
             if(password_verify($_POST["password"], $table["pass"])){
                 if($table["actif"]==1 && $table["confirme"]==1){
                     ViewTemplate::alert("Connexion effectuée", "primary", "Accueil.php");
-                $_SESSION["mail"] = $mail;
+                $_SESSION["mail"] = $table["nom"] . " " . $table["prenom"];
                 } else {
-                    ViewTemplate::alert("Compte inactif", "danger", "confirmationMail.php");
+                    ViewTemplate::alert("Compte inactif ou pas confirmé", "danger", "confirmationMail.php");
                 }
                 
             } else {
-                ViewTemplate::alert("Connexion impossible", "danger", "Accueil.php");
+                ViewTemplate::alert("Mail ou mot de passe incorrect", "danger", "Accueil.php");
             }
         } else {
             ViewTemplate::alert("Connexion Impossible car mail introuvable", "danger", "Accueil.php");

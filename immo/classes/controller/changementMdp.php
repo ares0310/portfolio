@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,9 +54,9 @@ session_start();
             if ($data) {
                 $mail = $_GET["mail"];
                 ModelUser::resetMdp($mail, password_hash($data[0], PASSWORD_DEFAULT));
-                echo "mdp costaud";
+                ViewTemplate::alert("Mot de passe changé", "success", "accueil.php");
             } else {
-                echo "mdp faible";
+                ViewTemplate::alert("Mot de passe faible", "danger", "accueil.php");
             }
         } else {
             ViewTemplate::alert("Les mots de passe sont incorrects", "danger", "accueil.php");
