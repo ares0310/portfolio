@@ -60,7 +60,6 @@
                 } else {
                     ViewTemplate::alert("Compte inactif ou pas confirmé", "danger", "confirmationMail.php");
                 }
-                
             } else {
                 ViewTemplate::alert("Mail ou mot de passe incorrect", "danger", "Accueil.php");
             }

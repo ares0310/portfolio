@@ -30,42 +30,19 @@
     <title>HTML</title>
 </head>
 
-<body>
+<body class="realestate_version">
 
 
     <?php
 
-    require_once "../model/modelInscription.php";
-    require_once "../view/viewInscription.php";
+    // require_once "../model/modelInscription.php";
+    // require_once "../view/viewInscription.php";
     require_once "../view/viewTemplate.php";
-    require_once "../utils/utils.php";
+    // require_once "../utils/utils.php";
 
-    ViewTemplate::menu();
-    if (isset($_POST["valider"])) {
-
-        $donnees = [$_POST['nom'], $_POST['prenom'], $_POST['mail'], $_POST['password'], $_POST['tel']];
-        // var_dump($donnees);
-        $types = ["nom", "prenom", "mail", "password", "tel"];
-        $data = Utils::valider($donnees, $types);
-
-        if ($data) {
-            // si data est bon
-            
-            if (!ModelUser::getEmail($_POST["mail"])) {
-                // mail existe pas = success
-                $token = rand(10000, 99999);
-                // ModelUser::inscription($_POST["nom"], $_POST["prenom"], $_POST["mail"], password_hash($_POST['password'], PASSWORD_DEFAULT), $_POST["tel"], 0, 0, 0, $token);
-                ViewTemplate::alert("Inscription faite avec succès, pour continuer", "success", "confirmationMail.php?mail=" . $_POST["mail"] . "&token=" . $token);
-            } else {
-                // msg mail existe pas, donc success
-                ViewTemplate::alert("Mail déjà pris", "danger", "controllerInscription.php");
-            }
-        } else {
-            ViewTemplate::alert("Inscription impossible", "danger", "controllerInscription.php");
-        }
-    } else {
-        ViewInscription::inscriptionForm();
-    }
+    // ViewTemplate::menu();
+    ViewTemplate::header();
+    
     ViewTemplate::footer();
 
 

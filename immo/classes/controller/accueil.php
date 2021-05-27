@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="../../css/responsive.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../../css/custom.css">
+    
 
     <!-- Modernizer for Portfolio -->
     <script src="../../js/modernizer.js"></script>
@@ -44,6 +45,7 @@
     require_once "../view/viewUser.php";
     require_once "../view/viewTemplate.php";
     ViewTemplate::menu();
+    
     
 ?>
 <h1>Accueil</h1>
@@ -62,11 +64,21 @@
 
 
 
-
+    
     <script src="../../js/jquery-3.5.1.min.js"></script>
     <script src="../../js/bootstrap.min.js"></script>
     <script src="../../js/all.min.js"></script>
     <script src="../../js/ctrl.js"></script>
+    <!-- ALL JS FILES -->
+    <script src="../../js/all.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="../../js/custom.js"></script>
+    <script src="../../js/portfolio.js"></script>
+    <script src="../../js/hoverdir.js"></script>    
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+   <!-- MAP & CONTACT -->
+    <!-- <script src="js/map.js"></script> -->
+    
 </body>
 
 </html>

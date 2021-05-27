@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../../css/all.min.css" />
     <!-- template ajout -->
     <link rel="stylesheet" href="../../css/style.css" /> 
+    <link rel="stylesheet" href="style.css" /> 
     
     <!-- Site Icons -->
     <link rel="shortcut icon" href="../../photos/favicon.ico" type="image/x-icon" />
