@@ -133,7 +133,7 @@ class ViewTemplate
 
         public static function marginTop(){
             ?>
-            <div style="margin-top:100px"></div>
+            <div style="margin-top:150px"></div>
             <?php
         }
 
@@ -143,7 +143,7 @@ class ViewTemplate
         public static function footer()
         {
             ?>
-                <footer class="footer">
+                <footer class="footer fixed-bottom">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-4 col-sm-4 col-xs-12">

@@ -1,7 +1,7 @@
 
     
     <?php
-
+session_start();
     require_once "../model/modelUser.php";
     require_once "../view/viewUser.php";
     require_once "../view/viewTemplate.php";

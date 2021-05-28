@@ -38,6 +38,7 @@
     } else {
         ViewUser::inscriptionForm();
     }
+    ViewTemplate::marginTop();
     ViewTemplate::footer();
     ViewTemplate::scriptJs();
 
