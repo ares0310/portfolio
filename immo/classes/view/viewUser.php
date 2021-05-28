@@ -34,7 +34,7 @@ class ViewUser
     {
 
     ?>
-        <div class="container p-5">
+        <div class="container">
             <div id="erreurs"></div>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" id="connexion_user" method="post">
                 <div class="form-group">

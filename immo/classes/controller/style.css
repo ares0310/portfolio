@@ -36,16 +36,17 @@
     IMPORT FILES
 -------------------------------------------------------------------*/
 
-@import url(css/animate.css);
-@import url(css/slideshow.css);
-@import url(css/flaticon.css);
-@import url(css/prettyPhoto.css);
-@import url(css/owl.carousel.css);
-@import url(css/font-awesome.min.css);
+@import url(../../css/animate.css);
+@import url(../../css/slideshow.css);
+@import url(../../css/flaticon.css);
+@import url(../../css/prettyPhoto.css);
+@import url(../../css/owl.carousel.css);
+@import url(../../css/font-awesome.min.css);
 
 /*------------------------------------------------------------------
     SKELETON
 -------------------------------------------------------------------*/
+
 
 body {
     color: #333;
@@ -55,7 +56,7 @@ body {
 }
 
 body.demos .section {
-    background: url(images/bg.png) repeat top center #f2f3f5;
+    background: url(../../images/bg.png) repeat top center #f2f3f5;
 }
 
 body.demos .section-title img {
@@ -399,6 +400,7 @@ a img.aligncenter {
 	-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.30);
 	-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.30);
 	box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.30);
+    
 }
 
 .header_style_01 .navbar-default {
@@ -2166,6 +2168,8 @@ select.mobile-device {
     padding: 90px 0 80px !important;
     color: #999;
     background-color: #333333;
+    
+    
 }
 
 .footer .widget-title {
