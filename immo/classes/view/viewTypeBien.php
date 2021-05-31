@@ -39,8 +39,10 @@ class ViewTypeBien
                 <tr>
                     <th><?php echo $typeRef["id"] ?></th>
                     <td><?php echo $typeRef["libelle"] ?></td>
-                    
-                    <td><a class="btn btn-primary" target="_blank" href="ModifTypeBien.php?id=<?php echo $typeRef["id"] ?>&libelle=<?php echo $typeRef["libelle"] ?>" role="button">Modifier TypeRef</a></td>
+                    <td><a type="button" class="btn btn-danger lien-modif" href="ModifTypeBien.php?id=<?php echo $typeRef["id"] ?>" role="button" data-toggle="modal" data-target="#modal-modif">
+                            Modifier profil
+                        </a></td>
+                    <!-- <td><a class="btn btn-primary" target="_blank" href="ModifTypeBien.php?id=<?php echo $typeRef["id"] ?>&libelle=<?php echo $typeRef["libelle"] ?>" role="button">Modifier TypeRef</a></td> -->
                     <td><a class="btn btn-danger" target="_blank" href="SuppressionTypeBien.php?id=<?php echo $typeRef["id"] ?>" role="button">Supprimer TypeRef</a></td>              
                 </tr>
                 <?php
@@ -48,14 +50,31 @@ class ViewTypeBien
                 ?>
             </tbody>
         </table>
+        <!-- Modal modifier profil-->
+        
+        <div class="modal fade modal-modif" id="modal-modif" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="modal-modifLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-modifLabel">Modif Type Bien</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                </div>
+            </div>
+        </div>
 <?php
     }
+
 
     public static function modifTypeBien(){
         ?>
         <div class="container p-5">
             <div id="erreurs"></div>
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" id="reset" method="post">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="modif_TypeBien" id="modif_TypeBien" method="post">
                 <div class="form-group">
                     <input type="text" id="libelle" name="libelle" class="form-control" value="<?php echo $_GET["libelle"] ?>" placeholder="Libelle">
                 </div>
@@ -67,7 +86,6 @@ class ViewTypeBien
         </div>
     <?php
     }
+    
 }
-
-
 ?>

@@ -17,7 +17,7 @@ class ViewTemplate
 
     public static function docType()
     {
-        
+
     ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -97,23 +97,23 @@ class ViewTemplate
                                     <li><a class="active" href="accueil.php">Accueil</a></li>
                                     <li><a href="about.html">About us </a></li>
                                     <li>
-                                    <?php
+                                        <?php
 
-                                    if (isset($_SESSION["id"])) {
-                                        // echo "bienvenu" . " " . $_SESSION["mail"];
-                                        echo ("welcome: " . " " . $_SESSION["id"] . " " . $_SESSION["role"] . " " . $_SESSION["nom"] . " <a style='color:white;' role='button' class='btn btn-danger active' href='disconnect.php' >Se déconnecter</a> ");
-                                    } else {
-                                    ?>
+                                        if (isset($_SESSION["id"])) {
+                                            // echo "bienvenu" . " " . $_SESSION["mail"];
+                                            echo ("welcome: " . " " . $_SESSION["id"] . " " . $_SESSION["role"] . " " . $_SESSION["nom"] . " <a style='color:white;' role='button' class='btn btn-danger active' href='disconnect.php' >Se déconnecter</a> ");
+                                        } else {
+                                        ?>
                                     </li>
-                                        <li><a class="" href="controllerInscription.php">Inscription</a></li>
-                                        <li><a class="" href="controllerConnexion.php">Se connecter</a></li>
-                                    <?php
-                                    }
-                                    ?>
-                                    
+                                    <li><a class="" href="controllerInscription.php">Inscription</a></li>
+                                    <li><a class="" href="controllerConnexion.php">Se connecter</a></li>
+                                <?php
+                                        }
+                                ?>
 
-                                    <!-- RECHERCHE -->
-                                    <!-- <li class="search-option">
+
+                                <!-- RECHERCHE -->
+                                <!-- <li class="search-option">
                                         <button class="search tran3s dropdown-toggle" id="searchDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search" aria-hidden="true"></i></button>
                                         <form action="#" class="p-color-bg dropdown-menu tran3s" aria-labelledby="searchDropdown">
                                             <input type="text" placeholder="Search....">
@@ -131,13 +131,14 @@ class ViewTemplate
             <?php
         }
 
-        public static function marginTop(){
+        public static function marginTop()
+        {
             ?>
-            <div style="margin-top:150px"></div>
+                <div style="margin-top:150px"></div>
             <?php
         }
 
-        
+
 
 
         public static function footer()
@@ -266,6 +267,9 @@ class ViewTemplate
         public static function scriptJs()
         {
             ?>
+            <script src="../../js/jquery-3.5.1.min.js"></script>
+                <script src="../../js/bootstrap.min.js"></script>
+                <script src="../../js/all.min.js"></script>
                 <!-- ALL JS FILES -->
                 <script src="../../js/all.js"></script>
                 <!-- ALL PLUGINS -->
@@ -275,6 +279,8 @@ class ViewTemplate
                 <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
                 <!-- MAP & CONTACT -->
                 <!-- <script src="js/map.js"></script> -->
+                <!-- ajax & modal -->
+                
 
             </body>
 

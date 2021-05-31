@@ -10,7 +10,7 @@
     require_once "../model/modelTypeBien.php";
 
     ViewTemplate::docType();
-    ViewTemplate::navBar();
+    // ViewTemplate::navBar();
     ViewTemplate::marginTop();
     
     if(isset($_POST["valider"])){
@@ -28,6 +28,6 @@
     
 
     ViewTemplate::marginTop();
-    ViewTemplate::footer();
+    // ViewTemplate::footer();
     ViewTemplate::scriptJs();
     ?>

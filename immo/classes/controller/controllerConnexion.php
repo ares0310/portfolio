@@ -22,13 +22,14 @@
 
                 if ($table["actif"] == 1 && $table["confirme"] == 1) {
                     // model objet
+
+                    
                     $dataUser = new ModelUser($table["id"]);
                     $_SESSION["id"] = $dataUser->getData("id");
                     $_SESSION["role"] = $dataUser->getData("role");
                     $_SESSION["nom"] = $dataUser->getData("nom") . " " . $dataUser->getData("prenom");
-                    header("Refresh:3; url = accueil.php");
-
                     ViewTemplate::alert("Connexion effectuée", "primary", "Accueil.php");
+
                 } else {
                     
                     ViewTemplate::alert("Compte inactif ou pas confirmé", "danger", "confirmationMail.php");

@@ -11,8 +11,6 @@
     ViewTemplate::marginTop();
 ?>
 <h1>Accueil</h1>
-
-
 <?php
     ViewTemplate::footer();
     ViewTemplate::scriptJs();
