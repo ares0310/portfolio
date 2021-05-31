@@ -30,7 +30,6 @@ class ViewTypeBien
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">type_bien</th>
-
                 </tr>
             </thead>
             <tbody>

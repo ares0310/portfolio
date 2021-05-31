@@ -18,5 +18,17 @@ class ModelTypeBien {
         $requete = $idcon -> prepare("UPDATE type_bien SET libelle = :libelle WHERE id = :id");
         $requete -> execute([":id"=>$id, ":libelle"=>$libelle]);
     }
+    public static function getTypeBienById($id){
+        $idcon = connexion();
+        $requete = $idcon -> prepare("SELECT * FROM type_bien WHERE id = :id");
+        $requete -> execute([":id" => $id]);
+        $user = $requete->fetch();
+        return $user;
+    }
+    public static function supprTypeBien($id){
+        $idcon = connexion();
+        $requete = $idcon -> prepare("DELETE FROM type_bien WHERE id = :id");
+        $requete -> execute([":id" => $id]);
+    }
 }
 ?>

@@ -27,7 +27,12 @@
             ViewTemplate::alert("Les mots de passe sont incorrects", "danger", "accueil.php");
         }
     } else {
-        ViewUser::resetMdp();
+        if(isset($_GET["mail"]) && isset($_GET["token"])){
+            ViewUser::resetMdp();
+        } else {
+            ViewTemplate::alert("Aucune info transmise", "success", "accueil.php");
+        }
+        
     }
     ViewTemplate::footer();
     ViewTemplate::scriptJs();
