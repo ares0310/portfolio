@@ -112,7 +112,7 @@ function valider(donnees, types, e) {
 // // AJAX modification ------------------------------------------------------------------------------
 
 $("#modifier").click(function (e) {
-  alert("hi");
+ 
   e.preventDefault();
   let request = $.ajax({
     type: "POST",
@@ -125,7 +125,7 @@ $("#modifier").click(function (e) {
 
     // valider le submit
     $("#modif_type_bien").submit(function (e) {
-      alert("lol");
+      
       // empecher redirection
       e.preventDefault();
       let donnees = [$("#libelle").val()]; // photo à ajouter
@@ -173,6 +173,19 @@ function modifTypeBien(data){
   request.always(function () {
     //Code à jouer après done OU fail dans tous les cas
   });
+};
+
+// tentatives d'utiliser fetch()
+
+function ajaxFetch(){
+  
+    alert("hi");
+   fetch("suppressionTypeBien.php") 
+  .then(response => response.json())
+  .then(response => alert(JSON.stringify(response)))
+  .catch(error => alert("Erreur : " + error));
+  
+  // };
 };
 
 
@@ -318,30 +331,50 @@ function modifTypeBien(data){
 //   });
 // }
 
+function listeTypeBien(){
+  let request = $.ajax({
+        type: "GET",
+        url: "listeTypeBien.php",
+        dataType: "html",
+      });
+    
+      request.done(function (response) {
+        $("body").html(response);
+      });
+    
+      request.fail(function (http_error) {
+        let server_msg = http_error.responseText;
+        let code = http_error.status;
+        let code_label = http_error.statusText;
+        alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+      });
+}
+
 // //ajax modal viewcompt: suppression compt
 
-// $(".supp-comp").click(function () {
-//   $(".btn-supp").attr("href", "SuppComp.php?id=" + $(this).attr("id"));
-// });
-// $(".btn-supp").click(function (e) {
-//   e.preventDefault();
+$(".suppTypeBien").click(function () {
+  // alert("ho");
+  $(".btn-supp").attr("href", "suppressionTypeBien.php?id=" + $(this).attr("id"));
+});
+$(".btn-supp").click(function (e) {
+  e.preventDefault();
 
-//   let request = $.ajax({
-//     type: "GET",
-//     url: $(this).attr("href"),
-//     dataType: "html",
-//   });
+  let request = $.ajax({
+    type: "GET",
+    url: $(this).attr("href"),
+    dataType: "html",
+  });
 
-//   request.done(function (reponse) {
-//     $(".annuler").trigger("click"); //je génère un clic artficiel sur le bouton annuler $(".annuler").click(); cette methode marche aussi
-//     listeComp();
-//   });
-//   request.fail(function (http_error) {
-//     //Code à jouer en cas d'éxécution en erreur du script du PHP
+  request.done(function (reponse) {
+    $(".annuler").trigger("click"); //je génère un clic artficiel sur le bouton annuler $(".annuler").click(); cette methode marche aussi
+    listeTypeBien();
+  });
+  request.fail(function (http_error) {
+    //Code à jouer en cas d'éxécution en erreur du script du PHP
 
-//     let server_msg = http_error.responseText;
-//     let code = http_error.status;
-//     let code_label = http_error.statusText;
-//     alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
-//   });
-// });
+    let server_msg = http_error.responseText;
+    let code = http_error.status;
+    let code_label = http_error.statusText;
+    alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+  });
+});
