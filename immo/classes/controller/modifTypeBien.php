@@ -9,13 +9,13 @@
     require_once "../view/viewTypeBien.php";
     require_once "../model/modelTypeBien.php";
 
-    ViewTemplate::docType();
+    // ViewTemplate::docType();
     // ViewTemplate::navBar();
     ViewTemplate::marginTop();
     
     if(isset($_POST["valider"])){
         if($_POST["libelle"]){
-            modelTypeBien::modifTypeBien($_POST["valider"],$_POST["libelle"]); // $_POST[]--> value DONC champ de form
+            modelTypeBien::modifTypeBien($_POST["id"], $_POST["libelle"]); // $_POST[]--> value DONC champ de form
             ViewTemplate::alert("done", "dd", "listeTypeBien.php");
             var_dump($_POST["valider"]);
         } else {
@@ -23,7 +23,7 @@
         }
     }
     else {
-        ViewTypeBien::modifTypeBien();
+        ViewTypeBien::modifTypeBien($_GET["id"]);
     }
     
 

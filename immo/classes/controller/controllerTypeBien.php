@@ -12,6 +12,7 @@
     ViewTemplate::docType();
     ViewTemplate::navBar();
     ViewTemplate::marginTop();
+    
     if(isset($_POST["valider"])){
         if($_POST["libelle"]){
             ViewTemplate::alert("Libelle ajouté", "success", "listeTypeBien.php");

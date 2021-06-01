@@ -5,7 +5,7 @@ typesTab = {
   photo: /^[\w]{2,}(.jpg|.jpeg|.png|.gif)$/,
   test: /^[a-zA-Z]+$/,
   // email:/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/,
-  libelle: /^[a-zA-Z]+$/
+  libelle: /^[a-zA-z\s\p{L}]{2,}$/u,
 };
 
 function validation(str, type) {
@@ -111,51 +111,54 @@ function valider(donnees, types, e) {
 
 // // AJAX modification ------------------------------------------------------------------------------
 
-let request = $.ajax({
-  type: "POST",
-  url: $(this).attr("href"),
-  dataType: "html",
-});
-
-request.done(function (response) {
-  $(".modal-modif .modal-body").html(response);
-
-  // empecher redirection
+$("#modifier").click(function (e) {
+  alert("hi");
   e.preventDefault();
-  let donnees = [
-    $("#libelle").val()
-  ]; // photo à ajouter
-  let types = ["libelle"];
-
-  // valider le submit
-  $("#modif_user").submit(function (e) {
-    valider(donnees, types, e);
-
-    // valider le bouton "modif"
-    $("modif").click(function () {});
-    // revient sur la page de la liste
-    listeTypeBien();
-  });
-});
-
-request.fail(function (http_error) {
-  let server_msg = http_error.responseText;
-  let code = http_error.status;
-  let code_label = http_error.statusText;
-  alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
-});
-
-$(".lien-modif").click(function (e) {
-  e.preventDefault();
-
   let request = $.ajax({
-    type: "GET",
+    type: "POST",
     url: $(this).attr("href"),
     dataType: "html",
   });
 
   request.done(function (response) {
     $(".modal-modif .modal-body").html(response);
+
+    // valider le submit
+    $("#modif_type_bien").submit(function (e) {
+      alert("lol");
+      // empecher redirection
+      e.preventDefault();
+      let donnees = [$("#libelle").val()]; // photo à ajouter
+      let types = ["libelle"];
+      valider(donnees, types, e);
+
+      if ($("#erreurs").is(":empty")) {
+              data = tabToObject($(this).serializeArray());
+              data.valider = "";
+              modifTypeBien(data);
+            }
+    });
+  });
+  request.fail(function (http_error) {
+    let server_msg = http_error.responseText;
+    let code = http_error.status;
+    let code_label = http_error.statusText;
+    alert("Erreur " + code + " (" + code_label + ") : " + server_msg);
+  });
+});
+
+function modifTypeBien(data){
+  
+  let request = $.ajax({
+    type: "POST",
+    url: "modifTypeBien.php",
+    dataType: "html",
+    data: data,
+  });
+
+  request.done(function (response) {
+    $(".modal-modif .modal-body").html(response);
+    location.reload();
   });
 
   request.fail(function (http_error) {
@@ -170,7 +173,8 @@ $(".lien-modif").click(function (e) {
   request.always(function () {
     //Code à jouer après done OU fail dans tous les cas
   });
-});
+};
+
 
 //   $("#modif_user").submit(function (e) {
 //     e.preventDefault();
@@ -211,16 +215,16 @@ $(".lien-modif").click(function (e) {
 //     });
 //   }
 
-//   function tabToObject(tab) {
-//     obj = {};
+  function tabToObject(tab) {
+    obj = {};
 
-//     for (i = 0; i < tab.length; i++) {
-//       cle = tab[i].name;
-//       valeur = tab[i].value;
-//       obj[cle] = valeur;
-//     }
-//     return obj;
-//   }
+    for (i = 0; i < tab.length; i++) {
+      cle = tab[i].name;
+      valeur = tab[i].value;
+      obj[cle] = valeur;
+    }
+    return obj;
+  }
 
 //   //tab[i] = { name: "id", value: "11" };
 // // cle= tab[i].name  // id
